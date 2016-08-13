@@ -1,0 +1,10 @@
+{
+    'sprites/body1.png': {
+      'type': 'body',
+      'anchor': 26
+    },
+    'sprites/head1.png': {
+      'type': 'head',
+      'anchor': 56
+    }
+}
