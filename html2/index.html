@@ -103,6 +103,7 @@
     </div>
 
     <div id="sidenav" class="sidenav">
+      <a href="#" onclick="$('#expect-dialog').dialog({width: 400}); return false;">Expectations</a>
       <a href="https://www.google.com/maps/place/Wellfleet+Preservation+Hall/@42.0189703,-70.9530957,9.5z/data=!4m5!3m4!1s0x0:0x8ba6cbc8d3cfc99a!8m2!3d41.9385123!4d-70.0324104">Directions</a>
       <a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;">Accommodations</a>
       <a href="https://docs.google.com/document/d/14HsPqcclIoGZMycZMrWr1qcpNTviEHevBuLjR3Ha56E/edit?usp=sharing">Activities</a>
@@ -180,20 +181,22 @@
 	  <ul class="horizontal">
 
 	<li class="first sq1" >
-		<a href="https://www.google.com/maps/place/Wellfleet+Preservation+Hall/@42.0189703,-70.9530957,9.5z/data=!4m5!3m4!1s0x0:0x8ba6cbc8d3cfc99a!8m2!3d41.9385123!4d-70.0324104" title="Directions to and around Wellfleet"
-           class="promo-img-box">
-			<img src="http://www.nationalgeographic.com/exposure/core_media/ngphoto/image/92072_0_480x360.jpg" width="303" height="227" alt="Places to and around Wellfleet" />
+		<a href="#" onclick="$('#expect-dialog').dialog({width: 400});
+                             return false;" title="What to Expect" class="promo-img-box">
+			<img src="http://www.nationalgeographic.com/exposure/core_media/ngphoto/image/92246_0_480x360.jpg" width="303" height="227" alt="What to Expect" />
 		</a>
-		<h4><a href="https://www.google.com/maps/place/Wellfleet+Preservation+Hall/@42.0189703,-70.9530957,9.5z/data=!4m5!3m4!1s0x0:0x8ba6cbc8d3cfc99a!8m2!3d41.9385123!4d-70.0324104" title="Directions to and around Wellfleet">Directions to and around Wellfleet</a></h4>
+		<h4><a href="#" onclick="$('#expect-dialog').dialog({width: 400}); return false;" title="What to Expect">What to Expect</a></h4>
 
-    	<div class="clearfix"></div>
-	</li>
+        <div id="expect-dialog" title="What to Expect" style="display: none">
+          <p><b>Welcome to our wedding!</b></p>
 
-	<li class="  sq2" >
-		<a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;" title="Places to Stay" class="promo-img-box">
-			<img src="http://www.nationalgeographic.com/exposure/core_media/ngphoto/image/91960_0_480x360.jpg" width="303" height="227" alt="Directions to Wellfleet" />
-		</a>
-		<h4><a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;" title="Places to Stay">Places to Stay</a></h4>
+          <p>We are so pleased to share a special day with our dearest
+          friends and familty.  Expect plenty of time for this
+          collision between disparate communities to play out, over
+          good food and drink and the rest of the normal stuff.  Also
+          look forward to some fun affiliated activities on one of the
+          most pleasant parts of the Cape.</p>
+        </div>
 
         <div id="places-dialog" title="Places to Stay" style="display:none">
           <p>There are plenty of houses to rent around Wellfleet.  Use
@@ -223,6 +226,16 @@
             will not be comprehensive.  In particular, we welcome
             personal and creative gifts, and donations to charity.</p>
         </div>
+
+    	<div class="clearfix"></div>
+	</li>
+
+	<li class="  sq2" >
+		<a href="https://www.google.com/maps/place/Wellfleet+Preservation+Hall/@42.0189703,-70.9530957,9.5z/data=!4m5!3m4!1s0x0:0x8ba6cbc8d3cfc99a!8m2!3d41.9385123!4d-70.0324104" title="Directions to and around Wellfleet"
+           class="promo-img-box">
+			<img src="http://www.nationalgeographic.com/exposure/core_media/ngphoto/image/92072_0_480x360.jpg" width="303" height="227" alt="Places to and around Wellfleet" />
+		</a>
+		<h4><a href="https://www.google.com/maps/place/Wellfleet+Preservation+Hall/@42.0189703,-70.9530957,9.5z/data=!4m5!3m4!1s0x0:0x8ba6cbc8d3cfc99a!8m2!3d41.9385123!4d-70.0324104" title="Directions to and around Wellfleet">Directions to and around Wellfleet</a></h4>
 
     	<div class="clearfix"></div>
 	</li>
@@ -270,12 +283,21 @@
     	<div class="clearfix"></div>
 	</li>
 
-	<li class="last sq2" >
-		<a href="https://www.zola.com/registry/jsqr" title="Gifts" class="promo-img-box">
+    <li class="  sq2" >
+		<a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;" title="Places to Stay" class="promo-img-box">
+			<img src="http://www.nationalgeographic.com/exposure/core_media/ngphoto/image/91960_0_480x360.jpg" width="303" height="227" alt="Directions to Wellfleet" />
+		</a>
+		<h4><a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;" title="Places to Stay">Places to Stay</a></h4>
+
+    	<div class="clearfix"></div>
+	</li>
+
+	<li class="last sq3" >
+		<a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;" title="Gifts" class="promo-img-box">
 			<img src="http://www.nationalgeographic.com/exposure/core_media/ngphoto/image/92247_0_480x360.jpg" width="303" height="227" alt="Gifts" />
 
 		</a>
-		<h4><a href="https://www.zola.com/registry/jsqr" title="Gifts">Gifts</a></h4>
+		<h4><a href="#" onclick="$('#places-dialog').dialog({width: 400}); return false;" title="Gifts">Gifts</a></h4>
 
     	<div class="clearfix"></div>
 	</li>
