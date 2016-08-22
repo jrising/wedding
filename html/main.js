@@ -80,12 +80,14 @@ function go(avatar) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 
+    loadWalls();
+
     var img = new Image();
     img.onload = function() {
         ctx.drawImage(img, 100, 100);
     };
     img.src = 'sprites/body1.png';
-
+    
     var background = new Image();
     var backgroundReady = false;
     background.onload = function() {
@@ -93,7 +95,7 @@ function go(avatar) {
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
     };
     background.src = 'world/wpvupper.png';
-
+    
     agent = new Agent(avatar, 320, 550);
     avatar.ready(function() {
 	setInterval(function() {
@@ -102,11 +104,10 @@ function go(avatar) {
 		    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 	    } else
 		    ctx.clearRect(0, 0, canvas.width, canvas.height);
-	    agent.randomMove();
+	    agent.move();
 	    agent.display(ctx);
 	}, 10);
     });
-
 
     /*ctx.fillRect(25,25,100,100);
     ctx.clearRect(45,45,60,60);
@@ -135,11 +136,18 @@ function go(avatar) {
     ws.onclose = function () {
         console.log ('connection closed!');
     };
+
+    return agent;
 }
 
 $(function() {
     avatar = new Avatar(sprites[1], sprites[0]);
-    go(avatar);
+    var agent = go(avatar);
+    $('#canvas').click(function(event) {
+	var posX = $(this).offset().left,
+            posY = $(this).offset().top;
+	agent.slideTo(event.pageX - posX, event.pageY - posY);
+    });
     dialog_selectname();
     /*avatar.ready(function() {
 	    Selector.create($('#selector'), avatar);
