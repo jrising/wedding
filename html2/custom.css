@@ -1,3 +1,10 @@
+body {
+    background-image: url(pics/full-background.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: fixed;
+}
+
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -46,4 +53,21 @@
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+.gn_wrapper {
+    background-color: #6b5d50;
+}
+
+section.toc_topic header {
+    background-color: #6b5d50;
+}
+
+#navigation_global_container {
+    /*background-color: transparent;*/
+}
+
+section.toc_topic.onscreen header {
+    /*background-color: #dfdcc3;*/
+    background-color: rgba(223, 220, 195, .6);
 }
