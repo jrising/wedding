@@ -71,3 +71,69 @@ section.toc_topic.onscreen header {
     /*background-color: #dfdcc3;*/
     background-color: rgba(223, 220, 195, .6);
 }
+
+section.toc_topic {
+    padding: 10px 0;
+}
+
+.content_section {
+    padding-left: 250px;
+    color: white;
+    text-align: center;
+}
+
+.content_h2 {
+    font-size: 1.5em;
+    padding-bottom: 10px;
+}
+
+.content_h3 {
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+
+.content_section button {
+    font-family:"Arial";
+    font-size:13px;
+    font-style:normal;
+    font-weight:normal;
+    color:#FFFFFF;
+    border-color:#FFFFFF;
+    border-style:solid;
+    border-width:1px;
+    border-radius:0px;
+    background-color:#6A5C4F;
+    padding: 0.46em 1.23em;
+    outline: 0;
+    line-height: 23px;
+}
+
+.content_section button:hover{
+    background-color:#cfb39a
+}
+
+.hidden-separator {
+    height: 40px;
+}
+
+.location-separator {
+    background-position: center;
+    background-image: url(https://www.theknot.com/static/xo-guest-services/assets/guest/themes/fireflies-zuni_brown/item_separator-8ef09f1a150e3afd9848b50bee06bc92.png);
+    height: 80px;
+    background-repeat: no-repeat;
+}
+
+.content-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.content-header .gn_wrapper {
+    background-image: url(pics/full-background.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: fixed;
+}
