@@ -87,7 +87,7 @@ function go(avatar) {
         ctx.drawImage(img, 100, 100);
     };
     img.src = 'sprites/body1.png';
-    
+
     var background = new Image();
     var backgroundReady = false;
     background.onload = function() {
@@ -95,7 +95,7 @@ function go(avatar) {
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
     };
     background.src = 'world/wpvupper.png';
-    
+
     agent = new Agent(avatar, 320, 550);
     avatar.ready(function() {
 	setInterval(function() {

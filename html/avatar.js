@@ -110,8 +110,13 @@ Agent.prototype.randomMove = function() {
 	    if (Math.random() < .005)
 	        this.headLeft = !this.headLeft;
     } else {
-	    this.locx += Math.random() * 2 - 1;
-	    this.locy += Math.random() * 2 - 1;
+        var dx = Math.random() * 2 - 1;
+        var dy = Math.random() * 2 - 1;
+        if (permitSlide(this.locx, this.locy + 60, this.locx + dx, this.locy + dy + 60)) {
+        //if (false) {
+	        this.locx += dx;
+	        this.locy += dy;
+        }
 	    if (Math.random() < .005)
 	        this.bodyLeft = !this.bodyLeft;
     }
@@ -119,9 +124,9 @@ Agent.prototype.randomMove = function() {
 
 Agent.prototype.slideTo = function(x, y) {
     if (permitSlide(this.locx, this.locy + 60, x, y))
-	this.destinations = [{xx: x, yy: y - 60}];
+	    this.destinations = [{xx: x, yy: y - 60}];
     else
-	this.movingHead = !this.movingHead;
+	    this.movingHead = !this.movingHead;
 }
 
 Agent.prototype.display = function(ctx) {

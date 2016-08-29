@@ -8,19 +8,27 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="jquery.WebSocket.js"></script>
   <script type="text/javascript" src="jquery.json-2.4.js"></script>
+  <script type="text/javascript" src="jquery.csv.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script type="text/javascript" src="avatar.js"></script>
   <script type="text/javascript" src="select.js"></script>
   <script type="text/javascript" src="routing.js"></script>
+  <script type="text/javascript" src="usermgt.js"></script>
+
+  <!-- Hopscotch -->
+  <script type="text/javascript" src="hopscotch/hopscotch-0.1.1.min.js"></script>
+  <link href="hopscotch/hopscotch-0.1.1.min.css" rel="stylesheet" />
+
   <script type="text/javascript" src="main.js"></script>
  </head>
  <body>
    <div id="selector"></div>
    <canvas id="canvas" width="1000" height="700"></canvas>
 
-   <div id="dialog-form" title="Find your name">
-     <h1>Welcome!  Please find your name below</h1>
+   <div id="target-invite" style="position: absolute; top: 630px; left: 350px"></div>
+
+   <div id="invite-form">
      <select id="invite-list">
        <optgroup label="Immediate families">
          <option value="Linda Newman Goetzel">Linda Newman Goetzel</option>
