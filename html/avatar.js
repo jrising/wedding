@@ -88,16 +88,16 @@ var Agent = function(avatar, x, y) {
 
 Agent.prototype.move = function() {
     if (this.destinations.length > 0) {
-	unitvec = getUnitVector(this.locx, this.locy, this.destinations[0].xx, this.destinations[0].yy);
-	this.bodyLeft = unitvec.uuunit < 0;
+	    unitvec = getUnitVector(this.locx, this.locy, this.destinations[0].xx, this.destinations[0].yy);
+	    this.bodyLeft = unitvec.uuunit < 0;
 
-	this.locx += unitvec.uuunit;
-	this.locy += unitvec.vvunit;
+	    this.locx += unitvec.uuunit;
+	    this.locy += unitvec.vvunit;
 
-	if (unitvec.distance < 2)
-	    this.destinations.shift();
+	    if (unitvec.distance < 2)
+	        this.destinations.shift();
     } else
-	this.randomMove();
+	    this.randomMove();
 }
 
 Agent.prototype.randomMove = function() {
@@ -113,7 +113,6 @@ Agent.prototype.randomMove = function() {
         var dx = Math.random() * 2 - 1;
         var dy = Math.random() * 2 - 1;
         if (permitSlide(this.locx, this.locy + 60, this.locx + dx, this.locy + dy + 60)) {
-        //if (false) {
 	        this.locx += dx;
 	        this.locy += dy;
         }
@@ -131,4 +130,16 @@ Agent.prototype.slideTo = function(x, y) {
 
 Agent.prototype.display = function(ctx) {
     this.avatar.display(ctx, this.locx, this.locy, this.headdx, this.headdy, this.headLeft, this.bodyLeft);
+}
+
+Agent.prototype.willAct = function() {
+    if (this.destinations.length > 0)
+        return true
+
+    var d = new Date();
+    var n = d.getTime();
+    if (this.movingHead)
+        return (n % 4 == 0);
+    else
+        return (n % 8 == 0);
 }

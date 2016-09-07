@@ -98,14 +98,16 @@ function go(avatar) {
 
     agent = new Agent(avatar, 320, 550);
     avatar.ready(function() {
-	setInterval(function() {
-	    if (backgroundReady) {
-		    ctx.clearRect(0, 0, canvas.width, canvas.height);
-		    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-	    } else
-		    ctx.clearRect(0, 0, canvas.width, canvas.height);
-	    agent.move();
-	    agent.display(ctx);
+	    setInterval(function() {
+            if (agent.willAct()) {
+	            if (backgroundReady) {
+		            ctx.clearRect(0, 0, canvas.width, canvas.height);
+		            ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+	            } else
+		            ctx.clearRect(0, 0, canvas.width, canvas.height);
+	            agent.move();
+	            agent.display(ctx);
+            }
 	}, 10);
     });
 

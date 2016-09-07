@@ -5,13 +5,34 @@ var invitestory = {
             title: "Welcome!  Find your invitation.",
             content: '<p id="invite-story1">This is the check-in desk.  Please select your name here.</p>',
             target: "target-invite",
-            placement: "right"
+            placement: "right",
+            onShow: function() {
+                $('.select2-dropdown').css({zIndex: 1000000});
+                $('#invite-story1').after($('#invite-form'));
+            },
+            onNext: function() {
+                $('body').after($('#invite-form'));
+            }
+        },
+        {
+            title: "Please wait...",
+            content: "We're finding your invitation.",
+            target: 'target-invite',
+            placement: 'right',
+            onShow: function() {
+                finduser($('#invite-list').val(), function(record) {
+                    if (record == null)
+                        hopscotch.nextStep();
+                    else
+                        hopscotch.endTour();
+                });
+            }
         },
         {
             title: "Select your avatar.",
             content: "Since this is your first time here, it's time to select your avatar.",
             target: "target-invite",
-            placement: "right"
+            placement: "right",
         }
     ],
     showPrevButton: true
@@ -47,7 +68,19 @@ $(function() {
               }
 
               hopscotch.startTour(invitestory);
-              $('.select2-dropdown').css({zIndex: 1000000});
-              $('#invite-story1').after($('#invite-form'));
           });
 });
+
+function finduser(name, callback) {
+    $.get("data/users.csv",
+          function(data) {
+              var records = $.csv.toArrays(data);
+
+              for (var ii = 1; ii < records.length; ii++) {
+                  if (records[ii][0] == name)
+                      return callback(records[ii]);
+              }
+
+              return callback(null);
+          });
+}
