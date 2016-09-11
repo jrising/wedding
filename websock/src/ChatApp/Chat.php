@@ -18,6 +18,25 @@ class Chat implements MessageComponentInterface {
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
+      if (substr($msg, 0, 4) == "\\//\\") {
+        $pieces = explode("/", substr($msg, 4));
+        switch ($pieces[0]) {
+        case "usermgt":
+          switch ($pieces[1]) {
+          case "new":
+            echo getcwd();
+            file_put_contents("html/data/users.csv", sprintf("%s,%d,%d,%d,%d,%s\n", $pieces[2], $pieces[3], $pieces[4], $pieces[5], $pieces[6], $pieces[7]), FILE_APPEND);
+            break;
+          default:
+            echo sprintf("Unknown command: %s", substr($msg, 4));
+          }
+          break;
+        default:
+          echo sprintf("Unknown command: %s", substr($msg, 4));
+        }
+        return;
+      }
+
         $numRecv = count($this->clients) - 1;
         echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');

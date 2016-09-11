@@ -1,3 +1,6 @@
+// open socket using standard syntax
+var ws = $.WebSocket("ws://127.0.0.1:8090/");
+
 var sprites = [
     {
         'src': 'sprites/body-missing.png',
@@ -111,32 +114,22 @@ function go(avatar) {
 	}, 10);
     });
 
-    /*ctx.fillRect(25,25,100,100);
-    ctx.clearRect(45,45,60,60);
-    ctx.strokeRect(50,50,50,50);
-
-    return;*/
-
-    // open socket using standard syntax
-    var ws = $.WebSocket("ws://existencia.org:8080/");
-    var pipe1;
-
     ws.onopen = function() {
         ws.send("Just joined!");
-        console.log ('connected!');
+        console.log('connected!');
     };
 
     ws.onmessage = function (e) {
-        console.log ('<: ' + e.data);
+        console.log('<: ' + e.data);
         alert(e.data);
     };
 
     ws.onerror = function (e) {
-        console.log ('<: ' + e.data);
+        console.log('<: ' + e.data);
     };
 
     ws.onclose = function () {
-        console.log ('connection closed!');
+        console.log('connection closed!');
     };
 
     return agent;
@@ -146,16 +139,8 @@ $(function() {
     avatar = new Avatar(sprites[1], sprites[0]);
     var agent = go(avatar);
     $('#canvas').click(function(event) {
-	var posX = $(this).offset().left,
+	    var posX = $(this).offset().left,
             posY = $(this).offset().top;
-	agent.slideTo(event.pageX - posX, event.pageY - posY);
+	    agent.slideTo(event.pageX - posX, event.pageY - posY);
     });
-    dialog_selectname();
-    /*avatar.ready(function() {
-	    Selector.create($('#selector'), avatar);
-    });*/
 });
-
-function dialog_selectname() {
-    $('#invite-list').select2();
-}

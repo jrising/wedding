@@ -7,6 +7,8 @@ var invitestory = {
             target: "target-invite",
             placement: "right",
             onShow: function() {
+                $('#invite-list').show()
+                $('#invite-list').select2();
                 $('.select2-dropdown').css({zIndex: 1000000});
                 $('#invite-story1').after($('#invite-form'));
             },
@@ -30,9 +32,34 @@ var invitestory = {
         },
         {
             title: "Select your avatar.",
-            content: "Since this is your first time here, it's time to select your avatar.",
+            content: '<p id="invite-story2">Since this is your first time here, it\'s time to select your avatar.</p>',
             target: "target-invite",
+            width: 300,
             placement: "right",
+            onShow: function() {
+                if ($('#invite-story2').next().length == 0) {
+                    avatar.ready(function() {
+                        $seldiv = $('<div></div>');
+                        $('#invite-story2').after($seldiv);
+	                    Selector.create($seldiv, avatar);
+                    });
+                }
+            },
+            onPrev: function() {
+                hopscotch.endTour();
+                setTimeout(function() {
+                    hopscotch.startTour(invitestory);
+                }, 100);
+            },
+            onNext: function() {
+                ws.send("\\//\\usermgt/new/" + $('#invite-list').val() + "/1/1/1/1/dummy");
+            }
+        },
+        {
+            title: "How to explore.",
+            content: "Now you can explore the site!  Just click around to move your avatar and interact with others.  Other users they will see your messages when they come back.",
+            target: "target-invite",
+            placement: "right"
         }
     ],
     showPrevButton: true
@@ -67,6 +94,7 @@ $(function() {
                       $optgroup.append('<option value="' + records[ii][2] + '">' + records[ii][2] + '</option>');
               }
 
+              hopscotch.endTour(true);
               hopscotch.startTour(invitestory);
           });
 });

@@ -5,6 +5,6 @@ use ChatApp\Chat;
 
     require dirname(__DIR__) . '/vendor/autoload.php';
 
-    $server = IoServer::factory(new Chat(), 8080);
+    $server = IoServer::factory(new Chat(), 8090);
 
     $server->run();

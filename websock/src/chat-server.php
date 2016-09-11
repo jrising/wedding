@@ -9,7 +9,7 @@ use ChatApp\Chat;
         new WsServer(
             new Chat()
         )
-      , 8080
+      , 8090
     );
 
     $server->run();
