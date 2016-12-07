@@ -24,8 +24,16 @@ class Chat implements MessageComponentInterface {
         case "usermgt":
           switch ($pieces[1]) {
           case "new":
-            echo getcwd();
             file_put_contents("html/data/users.csv", sprintf("%s,%d,%d,%d,%d,%s\n", $pieces[2], $pieces[3], $pieces[4], $pieces[5], $pieces[6], $pieces[7]), FILE_APPEND);
+            break;
+          default:
+            echo sprintf("Unknown command: %s", substr($msg, 4));
+          }
+          break;
+        case "turing":
+          switch ($pieces[1]) {
+          case "art":
+            file_put_contents("html/data/states.csv", sprintf("art,%s,%d,%d\n", join("/", array_slice($pieces, 2, -2)), $pieces[count($pieces) - 2], $pieces[count($pieces) - 1]), FILE_APPEND);
             break;
           default:
             echo sprintf("Unknown command: %s", substr($msg, 4));

@@ -7,13 +7,14 @@ var invitestory = {
             target: "target-invite",
             placement: "right",
             onShow: function() {
-                $('#invite-list').show()
+                $('#invite-form').show()
                 $('#invite-list').select2();
                 $('.select2-dropdown').css({zIndex: 1000000});
                 $('#invite-story1').after($('#invite-form'));
             },
             onNext: function() {
                 $('body').after($('#invite-form'));
+                $('#invite-form').hide()
             }
         },
         {

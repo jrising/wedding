@@ -128,9 +128,21 @@ Agent.prototype.slideTo = function(x, y) {
 	    this.movingHead = !this.movingHead;
 }
 
+Agent.prototype.tick = function() {
+    if (this.willAct()) {
+        this.move();
+        return true;
+    } else
+        return false;
+}
+
 Agent.prototype.display = function(ctx) {
     this.avatar.display(ctx, this.locx, this.locy, this.headdx, this.headdy, this.headLeft, this.bodyLeft);
 }
+
+Agent.prototype.click = function(x, y) {
+    agent.slideTo(x, y);
+};
 
 Agent.prototype.willAct = function() {
     if (this.destinations.length > 0)

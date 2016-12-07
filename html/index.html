@@ -15,6 +15,7 @@
   <script type="text/javascript" src="select.js"></script>
   <script type="text/javascript" src="routing.js"></script>
   <script type="text/javascript" src="usermgt.js"></script>
+  <script type="text/javascript" src="turing/contribute.js"></script>
 
   <!-- Hopscotch -->
   <script type="text/javascript" src="hopscotch/hopscotch-0.1.1.min.js"></script>
@@ -24,11 +25,16 @@
  </head>
  <body>
    <div id="selector"></div>
+   <div class="hopscotch-bubble">
+     <button id="contribute"
+             class="hopscotch-nav-button next">Contribute</button>
+   </div>
+
    <canvas id="canvas" width="1000" height="700"></canvas>
 
    <div id="target-invite" style="position: absolute; top: 630px; left: 350px"></div>
 
-   <div id="invite-form">
+   <div id="invite-form" style="display: none">
      <select id="invite-list">
        <optgroup label="Immediate families">
          <option value="Linda Newman Goetzel">Linda Newman Goetzel</option>

@@ -79,6 +79,9 @@ var sprites = [
     }
 ];
 
+var world = [];
+var refreshDisplay = false;
+
 function go(avatar) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
@@ -92,27 +95,34 @@ function go(avatar) {
     img.src = 'sprites/body1.png';
 
     var background = new Image();
-    var backgroundReady = false;
     background.onload = function() {
-	backgroundReady = true;
-	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+        world.unshift({
+            display: function(ctx) {
+                ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+            }
+        });
+        refreshDisplay = true;
     };
     background.src = 'world/wpvupper.png';
 
     agent = new Agent(avatar, 320, 550);
     avatar.ready(function() {
-	    setInterval(function() {
-            if (agent.willAct()) {
-	            if (backgroundReady) {
-		            ctx.clearRect(0, 0, canvas.width, canvas.height);
-		            ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-	            } else
-		            ctx.clearRect(0, 0, canvas.width, canvas.height);
-	            agent.move();
-	            agent.display(ctx);
-            }
-	}, 10);
+        world.push(agent);
     });
+
+    setInterval(function() {
+        for (var ii = 0; ii < world.length; ii++) {
+            var refresh = refreshDisplay;
+            if (world[ii].tick)
+                refresh |= world[ii].tick();
+        }
+        if (refresh) {
+		    ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var ii = 0; ii < world.length; ii++)
+                if (world[ii].display)
+                    world[ii].display(ctx);
+        }
+	}, 10);
 
     ws.onopen = function() {
         ws.send("Just joined!");
@@ -141,6 +151,10 @@ $(function() {
     $('#canvas').click(function(event) {
 	    var posX = $(this).offset().left,
             posY = $(this).offset().top;
-	    agent.slideTo(event.pageX - posX, event.pageY - posY);
+
+        for (var ii = 0; ii < world.length; ii++) {
+            if (world[ii].click)
+                refreshDisplay |= world[ii].click(event.pageX - posX, event.pageY - posY);
+        }
     });
 });
