@@ -5,6 +5,17 @@ body {
     background-attachment: fixed;
 }
 
+/* Smartphones ----------- */
+@media only screen and (max-width: 760px) {
+    body {
+        background-image: none;
+    }
+
+    #googlesearch {
+        display: none;
+    }
+}
+
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
