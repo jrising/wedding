@@ -51,7 +51,12 @@ var contributestory = {
                       });
             },
             onPrev: function() {
+                console.log("xX");
                 contributestory.i18n.nextBtn = "Add Art";
+            },
+            onCTA: function() {
+                hopscotch.endTour(true);
+                hopscotch.startTour(uploadartstory);
             }
         },
         {
@@ -85,6 +90,26 @@ var contributestory = {
         }
     }
 };
+
+var uploadartstory = {
+    id: 'uploadart-story',
+    steps: [
+        {
+            title: "Drag your image here.",
+            content: '<div id="uploader"></div>',
+            target: 'contribute',
+            placement: 'right',
+            fixedElement: true,
+            onShow: function() {
+                var uploader = new qq.FineUploader({
+                    element: document.getElementById("uploader")
+                });
+            }
+        }],
+    showPrevButton: true,
+    fixedElement: true
+};
+
 
 $(function() {
     $('#contribute').click(function() {
