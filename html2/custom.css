@@ -91,6 +91,8 @@ section.toc_topic {
 .content_section {
     color: white;
     text-align: center;
+    margin: auto;
+    max-width: 700px;
 }
 
 .content_h2 {
