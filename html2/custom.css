@@ -6,6 +6,13 @@ body {
     background-color: #6b5d50;
 }
 
+.extrainfo {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-bottom: 1em;
+}
+
 /* Smartphones ----------- */
 @media only screen and (max-width: 480px) {
     body {
@@ -93,6 +100,10 @@ section.toc_topic {
     text-align: center;
     margin: auto;
     max-width: 700px;
+}
+
+.content_section a {
+    color: #FBD42C
 }
 
 .content_h2 {
